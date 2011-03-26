@@ -1,4 +1,5 @@
 class Admin::PhotosController < ApplicationController
+  before_filter :authenticate_user!
   def index
     @photos = Photo.all
   end
