@@ -1,0 +1,13 @@
+.DS_Store
+*~
+config/database.yml
+coverage
+log/*.log
+nbproject
+tmp/**/*
+public/attachments/*
+.loadpath
+public/system/*
+.project
+db/schema.rb
+.tmp*

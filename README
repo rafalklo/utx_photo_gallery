@@ -1,0 +1,41 @@
+Static Photo Gallery is a Rails 2.3 Engine App which allows to add a photo
+gallery manager to the admin section of a site.
+
+===============================================================================
+
+REQUIREMENTS:
+
+Devise Authentication
+Paperclip + ImageMagick configured for the application
+
+The project requires to use nifty_layout for the title helpers to work
+
+MIGRATIONS: 
+
+The migrations must be manually copied from the plugin into the application
+
+
+MIDDLEWARE:
+
+The folder must be copied over to the application and 
+_APPLICATION_NAME_session must be set to the name in initializer/session_store.rb
+
+This setup is required for the uploadify plugin
+
+PAPERCLIP:
+
+paperclip.rb must be copied to the initializers folder
+
+
+PUBLIC DIRECTORY:
+
+Everything from the public directory must be copied to the public directory of the 
+application.
+
+The layout must include the following:
+
+<%= javascript_include_tag 'jquery-1.4.2.min.js', 'swfobject', 'jquery.uploadify.v2.1.0.min', 'jquery.colorbox.min.js' %>
+
+Also the CSS must be added to the layout:
+
+photo_gallery.css

@@ -1,0 +1,21 @@
+<h1><%= @photo_gallery.title %></h1>
+<script>
+$(document).ready(function(){
+
+ $("a[rel='slideshow']").colorbox({transition:"fade", current: "{current} of {total}"});
+
+ });
+</script>
+<% @photo_gallery.photos.each do |photo| %>
+	<div class="photo-wrapper">		
+		<a href="<%= photo.image.url %>" rel="slideshow">
+		<div class="photo" style="background-image: url('<%= (photo.image(:thumb)) %>');" ></div>
+		</a>
+	</div>
+<% end %>
+
+<div class="clear"></div>
+
+<p>
+  <%= link_to "Back to galleries", photo_galleries_path %>
+</p>

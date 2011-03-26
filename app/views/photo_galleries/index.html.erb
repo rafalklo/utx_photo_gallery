@@ -1,0 +1,20 @@
+<h1>Photo Galleries</h1>
+<% @photo_galleries.each_with_index do |photo_gallery, i| %>	
+					
+		<% if photo_gallery.photos.size > 0%>				
+		<div class="gallery-wrapper">
+			<div class="photo-wrapper">
+				<a href="<%= photo_gallery_path(photo_gallery) %>">
+				<div class="photo" style="background-image: url('<%= (photo_gallery.photos[0].image(:thumb)) %>');" ></div>
+				</a>				
+				<div class="link-gallery">
+					<%= link_to photo_gallery.title, photo_gallery_path(photo_gallery) %><br /><span class="gallery-size"><%= photo_gallery.photos.size %> photos</span>
+				</div>
+			</div>			
+		</div>
+		<% end %>	
+	
+<% end %>
+
+<div class="clear">
+

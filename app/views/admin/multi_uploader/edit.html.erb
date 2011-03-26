@@ -1,0 +1,42 @@
+<%- session_key_name = ActionController::Base.session_options[:key] -%>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#uploadify").uploadify({
+        'uploader'       : '/scripts/uploadify.swf',
+        'script'         : '/admin/photos/create',
+        'cancelImg'      : '/images/uploadify/cancel.png',
+        'folder'         : 'assets',
+        'queueID'        : 'fileQueue',
+        'auto'           : false,
+        'multi'          : true,
+		'scriptData'      : {
+	      '<%= session_key_name %>' : '<%= u cookies[session_key_name] %>',
+		  'album_id': '<%= @photo_gallery_id%>'
+	    },
+		'onAllComplete' : function(event,data) {
+     	 	location.href = "<%=edit_admin_photo_gallery_path(@photo_gallery)%>"
+    	}					
+    });
+	
+});
+</script>  
+
+<div class="block">
+    <div class="content">
+        <h2 class="title"><%= t("web-app-theme.multi_image_upload", :default => "Multi Image Upload") %> - Album: <%= @photo_gallery.title if @photo_gallery%></h2>
+        <div class="inner">
+        	
+            <div id="fileQueue">
+            </div>
+			<input type="hidden" name="superfield" value="xmas_gift" id="xmas_gift" />
+            <input type="file" name="uploadify" id="uploadify" />
+			<div class="group navform wat-cf"> 
+			  <%= link_to_function "Cancel all uploads", "jQuery('#uploadify').uploadifyClearQueue()", :class => "button" %>
+			  <%= link_to_function "Start Upload", "jQuery('#uploadify').uploadifyUpload()", :class => "button" %>
+			  <%= link_to "Edit Photo Gallery", edit_admin_photo_gallery_path(@photo_gallery), :class => "button" %>
+			  <%= link_to "Back to Photo Galleries", admin_photo_galleries_path, :class => "button" %>
+			</div>			
+        </div>
+    </div>
+</div>

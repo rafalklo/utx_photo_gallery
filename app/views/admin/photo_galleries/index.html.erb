@@ -1,0 +1,27 @@
+<% title "Photo Galleries" %>
+
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+	<th>Photos</th>
+    <th>Active</th>
+	<th>&nbsp;</th>
+  </tr>
+  <% for photo_gallery in @photo_galleries %>
+    <tr>
+      <td><%=h photo_gallery.title %></td>
+      <td><%=h photo_gallery.description %></td>
+	  <td><%=h photo_gallery.photos.size %></td>
+      <td><%=h photo_gallery.active %></td>
+      <td><%= link_to "Add Photos", edit_admin_multi_uploader_path(photo_gallery) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+      	  <%= link_to "Show", photo_gallery %>&nbsp;&nbsp;|&nbsp;&nbsp;
+          <%= link_to "Edit", edit_admin_photo_gallery_path(photo_gallery) %>&nbsp;&nbsp;|&nbsp;&nbsp;
+          <%= link_to "Destroy", admin_photo_gallery_path(photo_gallery), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Photo Gallery", new_admin_photo_gallery_path %>&nbsp;&nbsp;|&nbsp;&nbsp;
+<%= link_to "View Photo Galleries", photo_galleries_path %>
+</p>

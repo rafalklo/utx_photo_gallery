@@ -1,0 +1,8 @@
+<% title "New Photo Gallery" %>
+
+<% form_for(@photo_gallery, :url => {:controller => "admin/photo_galleries", :action => "create"}) do |f| %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+
+<p><%= link_to "Back to List", admin_photo_galleries_path %></p>

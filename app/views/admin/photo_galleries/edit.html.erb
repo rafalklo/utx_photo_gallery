@@ -1,0 +1,24 @@
+<% title "Edit Photo Gallery" %>
+
+
+<% form_for(@photo_gallery, :url => admin_photo_gallery_path(@photo_gallery)) do |f| %>
+	<%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+<% @photo_gallery.photos.each do |photo| %>
+	<div class="photo-wrapper">
+		<div class="photo" style="background-image: url('<%= (photo.image(:thumb)) %>');" ></div>
+		<div class="link-destroy">
+			<%= link_to "Destroy", admin_photo_path(photo), :confirm => 'Are you sure?', :method => :delete %>
+		</div>
+	</div>
+<% end %>
+
+<div class="clear"></div>
+
+
+<p>
+  <%= link_to "Show", @photo_gallery %> |
+  <%= link_to "View All", admin_photo_galleries_path %> | 
+  <%= link_to "Add Photos", edit_admin_multi_uploader_path(@photo_gallery) %>
+</p>
