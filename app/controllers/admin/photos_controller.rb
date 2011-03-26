@@ -1,5 +1,6 @@
 class Admin::PhotosController < ApplicationController
   before_filter :authenticate_user!
+  protect_from_forgery :except => "create"
   def index
     @photos = Photo.all
   end
