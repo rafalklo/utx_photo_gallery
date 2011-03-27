@@ -39,3 +39,9 @@ The layout must include the following:
 Also the CSS must be added to the layout:
 
 photo_gallery.css
+
+IMAGE MAGICK:
+
+Required 6.3.7-2 to use the resize option "heightxweight^"
+
+
