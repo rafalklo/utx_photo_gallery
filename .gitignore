@@ -11,3 +11,4 @@ public/system/*
 .project
 db/schema.rb
 .tmp*
+.svn

@@ -1,0 +1,51 @@
+Static Photo Gallery is a Rails 2.3 Engine App which allows to add a photo
+gallery manager to the admin section of a site.
+
+===============================================================================
+
+Manual Setup
+
+1. Change _APPLICATION_NAME_session
+
+	In the flash_session_cookie_middleware.rb change the _APPLICATION_NAME_session must be set to the name in initializer/session_store.rb
+
+2. Run nifty_layout generator
+	
+	https://github.com/ryanb/nifty-generators
+
+	ruby script/generate nifty_layout
+
+3. Get devise up and running
+
+	https://github.com/plataformatec/devise/tree/v1.0.11
+
+4. Add all the resources to the layout
+	
+	<%= javascript_include_tag 'jquery-1.4.2.min.js', 'swfobject', 'jquery.uploadify.v2.1.0.min', 'jquery.colorbox.min.js' %>
+
+	photo_gallery.css
+
+5. Integrate the routes to the routes.rb file
+
+6. Add Paperclip to the vendor/plugins directory  
+
+	paperclip.rb must be copied to the initializers folder
+
+7. Add to environment.rb
+
+	config.load_paths << "#{RAILS_ROOT}/app/middleware"
+
+8. Add to session_store.rb
+
+	ActionController::Dispatcher.middleware.insert_before(
+	  ActionController::Base.session_store,
+	  FlashSessionCookieMiddleware,
+	  ActionController::Base.session_options[:key]
+	)
+
+
+IMAGE MAGICK:
+
+Required 6.3.7-2 to use the resize option "heightxweight^"
+
+===============================================================================
